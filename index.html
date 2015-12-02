@@ -18,30 +18,33 @@
       alert('Nice to meet you ' + user + ', here\'s a short quiz about me.');
       /*question 1*/
       var ans1 = prompt('Was I born in New Mexico?');
+      console.log('user answered: ' + ans1)
       if (ans1.toLowerCase() == 'yes') {
         score++ ;
+        alert('That\'s right ' + user '. I was born and raised in New Mexico')
       } else {
-        /*nothing*/
+        alert('You said that I was not born in New Mexico. Sorry ' + user + ' but that\'s incorrect. I was born in Albuquerque, NM.');
       }
       /*question 2*/
       var ans2 = prompt('Do I like Starbucks?');
+      console.log('user answered: ' + ans2)
       if (ans2.toLowerCase() == 'no') {
         score++ ;
+        alert('That\'s right ' + user '. You can find better coffee, especially in Seattle.')
       } else {
-        /*nothing*/
+        alert('You said that I like Starbucks. Sorry ' + user + ' but that\'s incorrect. Herkimer is way better.');
       }
       /*question 3*/
       var ans3 = prompt('Do I have any pets?');
+      console.log('user answered: ' + ans3)
       if (ans3.toLowerCase() == 'no') {
         score++ ;
+        alert('That\'s right ' + user '. I would by my lease forbids it.')
       } else {
-        /*nothing*/
+        alert('You said that I have pets. Sorry ' + user + ' but that\'s incorrect, but I wish I had a cat.');
       }
       /*grading*/
-      alert('You got ' + score + ' answers correct.');
-      if (ans1.toLowerCase() == 'no') {alert('You said that I was not born in New Mexico. That\'s incorrect. I was born in Albuquerque, NM.');}
-      if (ans2.toLowerCase() == 'yes') {alert('You said that I like Starbucks. That\'s incorrect. Herkimer is way better.');}
-      if (ans3.toLowerCase() == 'yes') {alert('You said that I have pets. That\'s incorrect, but I wish I had a cat.');}
+      alert('You got ' + score + ' answers correct. Thanks for playing ' + user + "!");
     </script>
   </body>
 </html>
