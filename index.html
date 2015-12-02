@@ -11,20 +11,37 @@
     <h3>More About Me</h3>
     <p>My name is David Livingstone, and I was born and raised in New Mexico. I graduated with a degree in Journalism and Mass Communication from New Mexico State University, then I moved to the Puget Sound. I'd been working for an online retailer for a few years, but I left that job to enroll in Code Fellows and build on my technical skills. Outside of school and work, I like checking out coffee shops, running, reading about design, and cooking.</p>
     <script>
+      var score = 0;
+      /*introductions*/
       var user = prompt('What is your name?');
       console.log('user goes by: ' + user);
-      alert('Nice to meet you ' + user + ', here\'s a short quiz about me. Please respond with a lowercase "yes" or "no."');
-      var score = 0;
+      alert('Nice to meet you ' + user + ', here\'s a short quiz about me.');
+      /*question 1*/
       var ans1 = prompt('Was I born in New Mexico?');
-      if (ans1 == 'yes') {score++ ;}
+      if (ans1.toLowerCase() == 'yes') {
+        score++ ;
+      } else {
+        /*nothing*/
+      }
+      /*question 2*/
       var ans2 = prompt('Do I like Starbucks?');
-      if (ans2 == 'no') {score++ ;}
+      if (ans2.toLowerCase() == 'no') {
+        score++ ;
+      } else {
+        /*nothing*/
+      }
+      /*question 3*/
       var ans3 = prompt('Do I have any pets?');
-      if (ans3 == 'no') {score++ ;}
+      if (ans3.toLowerCase() == 'no') {
+        score++ ;
+      } else {
+        /*nothing*/
+      }
+      /*grading*/
       alert('You got ' + score + ' answers correct.');
-      if (ans1 == 'no') {alert('You said that I was not born in New Mexico. That\'s incorrect. I was born in Albuquerque, NM.');}
-      if (ans2 == 'yes') {alert('You said that I like Starbucks. That\'s incorrect. Herkimer is way better.');}
-      if (ans3 == 'yes') {alert('You said that I have pets. That\'s incorrect, but I wish I had a cat.');}
+      if (ans1.toLowerCase() == 'no') {alert('You said that I was not born in New Mexico. That\'s incorrect. I was born in Albuquerque, NM.');}
+      if (ans2.toLowerCase() == 'yes') {alert('You said that I like Starbucks. That\'s incorrect. Herkimer is way better.');}
+      if (ans3.toLowerCase() == 'yes') {alert('You said that I have pets. That\'s incorrect, but I wish I had a cat.');}
     </script>
   </body>
 </html>
