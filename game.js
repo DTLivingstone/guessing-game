@@ -30,8 +30,44 @@ if (ans3.toLowerCase() == 'no' || ans3.toLowerCase() == 'n') {
 } else {
   alert('You said that I have pets. Sorry ' + user + ' but that\'s incorrect, but I wish I had a cat.');
 }
-//question 1
-//question 2
-//question 3
+//question 4
+//question 5
+var secretNumber = 36;
+var ans5 = prompt('I\'m thinking of a whole number between 0 and 100. What is it?');
+console.log('user answered: ' + ans5);
+while (ans5 != secretNumber) {
+  //too low
+  if (ans5 < 26) {
+    var ans5 = prompt('You\'re too low. Guess again.');
+    console.log('user answered: ' + ans5);
+  }
+  //too high
+  else if (ans5 > 46) {
+    var ans5 = prompt('You\'re too high. Guess again.');
+    console.log('user answered: ' + ans5);
+  }
+  //close
+  else if (ans5 >= 26 || ans5 >= 46) {
+    var ans5 = prompt('You\'re getting closer. Guess again.');
+    console.log('user answered: ' + ans5);
+  }
+  //bad input
+  else {
+    var ans5 = prompt('Are you sure that\'s a number? Try again.');
+    console.log('user answered: ' + ans5);
+  }
+}
+score++ ;
+alert('You got it! The answer is ' + secretNumber + '.');
+//question 6
+var homes = ['carlsbad', 'socorro', 'ely', 'leadville', 'las cruces', 'renton', 'seattle'];
+var ans6 = prompt('Name one city in which I\'ve lived');
+console.log('user answered: ' + ans6)
+for (var i = 0; i < 7; i++) {
+  if (ans6.toLowerCase() == homes[i]) {
+    score++ ;
+    alert('That\'s right. I have lived in ' + homes [i] + '.');
+  }
+}
 //scoring
 alert('You got ' + score + ' answers correct. Thanks for playing ' + user + "!");
