@@ -14,7 +14,7 @@ if (ans1.toLowerCase() == 'yes' || ans1.toLowerCase() == 'y') {
 }
 //question 2
 var ans2 = prompt('Do I like Starbucks?');
-console.log('user answered: ' + ans2)
+console.log('user answered: ' + ans1)
 if (ans2.toLowerCase() == 'no' || ans2.toLowerCase() == 'n') {
   score++ ;
   alert('That\'s right ' + user + '. You can find better coffee, especially in Seattle.');
@@ -30,5 +30,8 @@ if (ans3.toLowerCase() == 'no' || ans3.toLowerCase() == 'n') {
 } else {
   alert('You said that I have pets. Sorry ' + user + ' but that\'s incorrect, but I wish I had a cat.');
 }
+//question 1
+//question 2
+//question 3
 //scoring
 alert('You got ' + score + ' answers correct. Thanks for playing ' + user + "!");
