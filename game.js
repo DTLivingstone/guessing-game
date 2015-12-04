@@ -1,58 +1,59 @@
 // global variables
 var score = 0;
-var response = 'x';
 
 // introductions
 var user = prompt('What is your name?');
 console.log('user goes by: ' + user);
 alert('Nice to meet you ' + user + ', here\'s a short quiz about me.');
 
-// question 1 functionalized
+// question 1
 yesNoQuestion('Was I born in New Mexico?', 'y', 'That\'s right ' + user + ', I was born and raised in New Mexico', 'You said that I was not born in New Mexico. Sorry ' + user + ' but that\'s incorrect. I was born in Albuquerque, NM.');
 
-// question 2 functionalized
+// question 2
 yesNoQuestion('Do I like Starbucks?', 'n', 'That\'s right ' + user + '. You can find better coffee, especially in Seattle.', 'You said that I like Starbucks. Sorry ' + user + ' but that\'s incorrect. Herkimer is way better.');
 
-// question 3 functionalized
+// question 3
 yesNoQuestion('Do I have any pets?', 'n', 'That\'s right ' + user + '. I would by my lease forbids it.', 'You said that I have pets. Sorry ' + user + ' but that\'s incorrect, but I wish I had a cat.');
 
 // question 4
 
-// question 5 functionalized
+// question 5
 guessMyNumber(36);
 
-// question 6 functionalized
-genericQuestion('Name one city in which I\'ve lived', ['carlsbad', 'socorro', 'ely', 'leadville', 'las cruces', 'renton', 'seattle'], 'That\'s right. I have lived in ');
+// question 6
+multiAnswer('Name one city in which I\'ve lived', ['carlsbad', 'socorro', 'ely', 'leadville', 'las cruces', 'renton', 'seattle'], 'That\'s right. I have lived in ');
 
 // scoring
 alert('You got ' + score + ' answers correct. Thanks for playing ' + user + "!");
 
 // evaluation for questions with 1 or more right answer
-function genericQuestion(question, answer, correctResponse) {
+function multiAnswer(question, answer, correctResponse) {
   var response = prompt(question);
   console.log('user answered:' + response);
   for (var i = 0; i < answer.length; i++) {
     if (response.toLowerCase() == answer[i]) {
       score++ ;
-      alert(correctResponse + response + '.');
+      alert(correctResponse + response + '.'); /* this is a bit messy, but I ran into scope issues here */
+    } else {
+      // need to tell user they're wrong if the last comparison in the array fails
     }
   }
 }
 
 // evaluation for yes/no question
 function yesNoQuestion(question, answer, correctResponse, wrongResponse) {
-    var response = prompt(question);
-    console.log('user answered:' + response);
-    response = response.toLowerCase();
-    console.log('user response changed to: ' + response);
-    response = response.charAt(0);
-    console.log('user response changed to: ' + response);
-    if (response == answer) {
-      score++ ;
-      alert(correctResponse);
-    } else {
-      alert(wrongResponse);
-    }
+  var response = prompt(question);
+  console.log('user answered:' + response);
+  response = response.toLowerCase();
+  console.log('user response changed to: ' + response);
+  response = response.charAt(0);
+  console.log('user response changed to: ' + response);
+  if (response == answer) {
+    score++ ;
+    alert(correctResponse);
+  } else {
+    alert(wrongResponse);
+  }
 }
 
 // evaluation for secret number
