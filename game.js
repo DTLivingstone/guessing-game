@@ -31,6 +31,19 @@ if (ans3.toLowerCase() == 'no' || ans3.toLowerCase() == 'n') {
   alert('You said that I have pets. Sorry ' + user + ' but that\'s incorrect, but I wish I had a cat.');
 }
 //question 4
+genericQuestion('What is my favorite color?', 'blue');
+//generic y/n question evaluation
+function genericQuestion(question, answer) {
+  var response = prompt(question);
+  console.log('user answered:' + response);
+  if (response.toLowerCase() == answer.toLowerCase()) {
+    score++ ;
+    alert('That\'s right ' + user + '. The answer is ' + answer + '.');
+  } else {
+    alert('Sorry ' + user + ', but the correct answer is ' + answer + '.');
+  }
+}
+
 //question 5
 var secretNumber = 36;
 var ans5 = prompt('I\'m thinking of a whole number between 0 and 100. What is it?');
