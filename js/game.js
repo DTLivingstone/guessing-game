@@ -1,38 +1,22 @@
-// global variables
+//  global variables
 var score = 0;
+var user = '';
+var response = '';
 
-// introductions
-var user = prompt('What is your name?');
-console.log('user goes by: ' + user);
-alert('Nice to meet you ' + user + ', here\'s a short quiz about me.');
+// testing DOM manipulation
+var one = document.getElementById('one');
+var two = document.getElementById('two');
+one.textContent = "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.";
 
-// question 1
-yesNoQuestion('Was I born in New Mexico?', 'y', 'That\'s right ' + user + ', I was born and raised in New Mexico', 'You said that I was not born in New Mexico. Sorry ' + user + ' but that\'s incorrect. I was born in Albuquerque, NM.');
+// var1 = one.textContent('Nice to meet you, here\'s a short quiz about me.') ;
 
-// question 2
-yesNoQuestion('Do I like Starbucks?', 'n', 'That\'s right ' + user + '. You can find better coffee, especially in Seattle.', 'You said that I like Starbucks. Sorry ' + user + ' but that\'s incorrect. Herkimer is way better.');
-
-// question 3
-yesNoQuestion('Do I have any pets?', 'n', 'That\'s right ' + user + '. I would by my lease forbids it.', 'You said that I have pets. Sorry ' + user + ' but that\'s incorrect, but I wish I had a cat.');
-
-// question 4
-
-// question 5
-guessMyNumber(36);
-
-// question 6
-multiAnswer('Name one city in which I\'ve lived', ['carlsbad', 'socorro', 'ely', 'leadville', 'las cruces', 'renton', 'seattle'], 'That\'s right. I have lived in ');
-
-// scoring
-alert('You got ' + score + ' answers correct. Thanks for playing ' + user + "!");
-
-// evaluation for questions with 1 or more right answer
-function multiAnswer(question, answer, correctResponse) {
+// function declarations
+function qMultiAnswer(question, answer, correctResponse) {
   var response = prompt(question);
   console.log('user answered:' + response);
-  for (var i = 0; i < answer.length; i++) {
-    if (response.toLowerCase() == answer[i]) {
-      score++ ;
+  for (var i = 0; i < answer.length; i += 1) {
+    if (response.toLowerCase() === answer[i]) {
+      score += 1 ;
       alert(correctResponse + response + '.'); /* this is a bit messy, but I ran into scope issues here */
     } else {
       // need to tell user they're wrong if the last comparison in the array fails
@@ -40,24 +24,19 @@ function multiAnswer(question, answer, correctResponse) {
   }
 }
 
-// evaluation for yes/no question
-function yesNoQuestion(question, answer, correctResponse, wrongResponse) {
-  var response = prompt(question);
-  console.log('user answered:' + response);
+function qYesNo(question, answer, correctResponse, wrongResponse) {
+  var response = prompt(question).toLowerCase().charAt(0);
   response = response.toLowerCase();
   console.log('user response changed to: ' + response);
-  response = response.charAt(0);
-  console.log('user response changed to: ' + response);
-  if (response == answer) {
-    score++ ;
+  if (response === answer) {
+    score += 1 ;
     alert(correctResponse);
   } else {
     alert(wrongResponse);
   }
 }
 
-// evaluation for secret number
-function guessMyNumber(secretNumber) {
+function qGuessNumber(secretNumber) {
   var response = prompt('I\'m thinking of a whole number between 0 and 100. What is it?');
   console.log('user answered: ' + response);
   while (response != secretNumber) {
@@ -82,6 +61,21 @@ function guessMyNumber(secretNumber) {
       console.log('user answered: ' + response);
     }
   }
-  score++ ;
+  score += 1 ;
   alert('You got it! The answer is ' + secretNumber + '.');
 }
+
+// introductions
+var user = prompt('What is your name?');
+console.log('user goes by: ' + user);
+alert('Nice to meet you ' + user + ', here\'s a short quiz about me.');
+
+// questions
+qYesNo('Was I born in New Mexico?', 'y', 'That\'s right ' + user + ', I was born and raised in New Mexico', 'You said that I was not born in New Mexico. Sorry ' + user + ' but that\'s incorrect. I was born in Albuquerque, NM.');
+qYesNo('Do I like Starbucks?', 'n', 'That\'s right ' + user + '. You can find better coffee, especially in Seattle.', 'You said that I like Starbucks. Sorry ' + user + ' but that\'s incorrect. Herkimer is way better.');
+qYesNo('Do I have any pets?', 'n', 'That\'s right ' + user + '. I would by my lease forbids it.', 'You said that I have pets. Sorry ' + user + ' but that\'s incorrect, but I wish I had a cat.');
+qGuessNumber(36);
+qMultiAnswer('Name one city in which I\'ve lived', ['carlsbad', 'socorro', 'ely', 'leadville', 'las cruces', 'renton', 'seattle'], 'That\'s right. I have lived in ');
+
+// scoring
+alert('You got ' + score + ' answers correct. Thanks for playing ' + user + "!");
