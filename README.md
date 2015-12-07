@@ -7,7 +7,7 @@ David Livingstone
 david@david.tl
 
 ## Description
-The index page the user his or her name, then asks a series of questions about myself. I've also included a description of the code, and a short autobiography on another page.
+The index page the user his or her name, then asks a series of questions about myself. Replies are then output to the page, color coded green for correct answers and red for wrong answers. I've also included a description of the code, and a short autobiography on another page.
 
 ## License
 This software is available under the MIT License. See LICENSE for details.

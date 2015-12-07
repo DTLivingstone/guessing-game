@@ -2,80 +2,85 @@
 var score = 0;
 var user = '';
 var response = '';
-
-// testing DOM manipulation
 var one = document.getElementById('one');
 var two = document.getElementById('two');
-one.textContent = "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.";
-
-// var1 = one.textContent('Nice to meet you, here\'s a short quiz about me.') ;
+var three = document.getElementById('three');
+var four = document.getElementById('four');
+var five = document.getElementById('five');
 
 // function declarations
-function qMultiAnswer(question, answer, correctResponse) {
-  var response = prompt(question);
-  console.log('user answered:' + response);
-  for (var i = 0; i < answer.length; i += 1) {
+function qMultiAnswer(qNumber, question, answer, correctResponse, wrongResponse) {
+  response = prompt(question);
+  console.log('user answered: ' + response);
+  for (var i = 0; i <= answer.length; i++) {
+    console.log('i is: ' + i);
     if (response.toLowerCase() === answer[i]) {
-      score += 1 ;
-      alert(correctResponse + response + '.'); /* this is a bit messy, but I ran into scope issues here */
-    } else {
-      // need to tell user they're wrong if the last comparison in the array fails
+      score += 1;
+      qNumber.textContent = correctResponse + response + '.';
+      qNumber.className = 'right';
+      break;
+    } else if (i === answer.length) {
+      qNumber.textContent = wrongResponse + response + '.';
+      qNumber.className = 'wrong';
     }
   }
 }
 
-function qYesNo(question, answer, correctResponse, wrongResponse) {
-  var response = prompt(question).toLowerCase().charAt(0);
+function qYesNo(qNumber, question, answer, correctResponse, wrongResponse) {
+  response = prompt(question).toLowerCase().charAt(0);
   response = response.toLowerCase();
   console.log('user response changed to: ' + response);
   if (response === answer) {
     score += 1 ;
-    alert(correctResponse);
+    qNumber.textContent = correctResponse;
+    qNumber.className = 'right';
   } else {
-    alert(wrongResponse);
+    qNumber.textContent = wrongResponse;
+    qNumber.className = 'wrong';
   }
 }
 
-function qGuessNumber(secretNumber) {
-  var response = prompt('I\'m thinking of a whole number between 0 and 100. What is it?');
+function qGuessNumber(qNumber, secretNumber) {
+  response = prompt('I\'m thinking of a whole number between 0 and 100. What is it?');
   console.log('user answered: ' + response);
   while (response != secretNumber) {
     // too low
     if (response < (secretNumber - 10)) {
-      var response = prompt('You\'re too low. Guess again.');
+      response = prompt('You\'re too low. Guess again.');
       console.log('user answered: ' + response);
     }
     // too high
     else if (response > (secretNumber + 10)) {
-      var response = prompt('You\'re too high. Guess again.');
+      response = prompt('You\'re too high. Guess again.');
       console.log('user answered: ' + response);
     }
     // close
     else if (response >= (secretNumber - 10) || response >= (secretNumber + 10)) {
-      var response = prompt('You\'re getting close. Guess again.');
+      response = prompt('You\'re getting close. Guess again.');
       console.log('user answered: ' + response);
     }
     // bad input
     else {
-      var response = prompt('Are you sure that\'s a number? Try again.');
+      response = prompt('Are you sure that\'s a number? Try again.');
       console.log('user answered: ' + response);
     }
   }
   score += 1 ;
-  alert('You got it! The answer is ' + secretNumber + '.');
+  qNumber.textContent = 'You got it! The answer is ' + secretNumber + '.';
+  qNumber.className = 'right';
 }
 
 // introductions
-var user = prompt('What is your name?');
+user = prompt('What is your name?');
 console.log('user goes by: ' + user);
 alert('Nice to meet you ' + user + ', here\'s a short quiz about me.');
 
 // questions
-qYesNo('Was I born in New Mexico?', 'y', 'That\'s right ' + user + ', I was born and raised in New Mexico', 'You said that I was not born in New Mexico. Sorry ' + user + ' but that\'s incorrect. I was born in Albuquerque, NM.');
-qYesNo('Do I like Starbucks?', 'n', 'That\'s right ' + user + '. You can find better coffee, especially in Seattle.', 'You said that I like Starbucks. Sorry ' + user + ' but that\'s incorrect. Herkimer is way better.');
-qYesNo('Do I have any pets?', 'n', 'That\'s right ' + user + '. I would by my lease forbids it.', 'You said that I have pets. Sorry ' + user + ' but that\'s incorrect, but I wish I had a cat.');
-qGuessNumber(36);
-qMultiAnswer('Name one city in which I\'ve lived', ['carlsbad', 'socorro', 'ely', 'leadville', 'las cruces', 'renton', 'seattle'], 'That\'s right. I have lived in ');
+qYesNo(one, 'Was I born in New Mexico?', 'y', 'That\'s right ' + user + ', I was born and raised in New Mexico', 'You said that I was not born in New Mexico. Sorry ' + user + ' but that\'s incorrect. I was born in Albuquerque, NM.');
+qYesNo(two, 'Do I like Starbucks?', 'n', 'That\'s right ' + user + '. You can find better coffee, especially in Seattle.', 'You said that I like Starbucks. Sorry ' + user + ' but that\'s incorrect. Herkimer is way better.');
+qYesNo(three, 'Do I have any pets?', 'n', 'That\'s right ' + user + '. I would by my lease forbids it.', 'You said that I have pets. Sorry ' + user + ' but that\'s incorrect, but I wish I had a cat.');
+qGuessNumber(four, 36);
+qMultiAnswer(five, 'Name one city in which I\'ve lived', ['carlsbad', 'socorro', 'ely', 'leadville', 'las cruces', 'renton', 'seattle'], 'That\'s right. I have lived in ', 'Sorry, but I\'ve never lived in ');
 
 // scoring
-alert('You got ' + score + ' answers correct. Thanks for playing ' + user + "!");
+('You got ' + score + ' answers correct. Thanks for playing ' + user + "!");
