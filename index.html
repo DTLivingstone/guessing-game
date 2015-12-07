@@ -3,12 +3,23 @@
   <head>
     <meta charset="utf-8">
     <title>David's Quiz</title>
+    <link rel="stylesheet" href="css/style.css">
   </head>
   <body>
     <h1>My Quiz</h1>
+    <h2 >Question 1:</h2>
+    <h3 id="one">the answer to question 1</h3>
+    <h2>Question 2:</h2>
+    <h3 id="two">the answer to question 2</h3>
+    <h2>Question 3:</h2>
+    <h3 id="three">the answer to question 3</h3>
+    <h2>Question 4:</h2>
+    <h3 id="four">the answer to question 4</h3>
+    <h2>Question 5:</h2>
+    <h3 id="five">the answer to question 5</h3>
     <h3>The Code</h3>
-    <p>I start by asking the user for his or her name in a prompt, then output it to the console. Next I greet the user in an alert and introduce the quiz. I start the quiz by declaring a variable called "score" and setting it to 0. After that I ask the first question in a prompt, then test to see if it's correct and increment score by 1 if it is. I repeat this twice with for the other questions. After this I use an alert to tell the user how many answers they got correct. Finally, I tell the user which answers they got wrong in separate alerts.</p>
+    <p>In this latest version, I've created a function for each unique type of question. I can then create different questions by calling the relevant function and passing necessary information to it, including the question, the answer, and how to respond when the user is correct or wrong. These functions also need a question number, qNumber, passed to them so they can modify the right section of the html.</p>
     <p>Want to know even more about me? Click <a href="about.html">here</a>.</p>
-    <script src="game.js"></script>
+    <script src="js/game.js"></script>
   </body>
-</html>
+</html
